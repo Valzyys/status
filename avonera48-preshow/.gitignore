@@ -1,0 +1,9 @@
+node_modules
+out
+# Audio hasil generate (dibuat ulang lewat `npm run audio`)
+public/audio/sfx/*.wav
+public/audio/bgm/generated
+public/audio/vo/*.mp3
+public/audio/vo/*.meta.json
+public/audio/manifest.json
+public/audio/vo/*.txt
