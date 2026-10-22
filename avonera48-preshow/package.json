@@ -1,0 +1,35 @@
+{
+  "name": "avonera48-preshow",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "remotion studio src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "audio": "node scripts/gen-sfx.mjs && node scripts/gen-bgm.mjs && node scripts/gen-vo.mjs && node scripts/build-manifest.mjs",
+    "manifest": "node scripts/build-manifest.mjs",
+    "render:loop": "node scripts/build-manifest.mjs && remotion render src/index.ts PreShowLoop out/raw-loop.mp4 && node scripts/master-audio.mjs loop",
+    "render:countdown": "node scripts/build-manifest.mjs && remotion render src/index.ts FinalCountdown out/raw-countdown.mp4 --props='{\"minutes\":5}' && node scripts/master-audio.mjs countdown",
+    "render:standby": "node scripts/build-manifest.mjs && remotion render src/index.ts Standby out/raw-standby.mp4 && node scripts/master-audio.mjs standby",
+    "render:all": "npm run audio && npm run render:loop && npm run render:countdown && npm run render:standby",
+    "stills": "node scripts/stills.mjs"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.536",
+    "@remotion/google-fonts": "4.0.536",
+    "@remotion/layout-utils": "4.0.536",
+    "@remotion/media-utils": "4.0.536",
+    "@remotion/noise": "4.0.536",
+    "@remotion/transitions": "4.0.536",
+    "qrcode": "^1.5.4",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "remotion": "4.0.536"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.5",
+    "@types/qrcode": "^1.5.6",
+    "@types/react": "^19.3.0",
+    "typescript": "^7.0.2"
+  }
+}
